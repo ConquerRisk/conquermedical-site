@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conquer Medical | AI Safety Research for Clinical Medicine</title>
+<meta name="description" content="Conquer Medical develops structural safety frameworks for medical AI deployment. Founded by M. Antony Ewing, PhD (Princeton). Research programme: AI-Based Hypothesis Adjudication (AHA).">
+<meta property="og:title" content="Conquer Medical | AI Safety Research for Clinical Medicine">
+<meta property="og:description" content="Structural safety frameworks for medical AI. Pre-deployment diagnostics. Hypothesis adjudication. Paediatric oncology applications.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ink: #1a1a2e;
+  --ink-light: #3d3d5c;
+  --ink-muted: #6b6b8a;
+  --surface: #fafaf8;
+  --surface-warm: #f5f3ef;
+  --accent: #1b6b4a;
+  --accent-light: #2a9d6e;
+  --accent-pale: #e8f5ee;
+  --rule: #d4d0c8;
+  --white: #ffffff;
+  --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html { font-size: 17px; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--surface);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Layout ── */
+.container { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+.wide-container { max-width: 1080px; margin: 0 auto; padding: 0 2rem; }
+
+/* ── Header ── */
+header {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--rule);
+  background: var(--white);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.92);
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.logo span { color: var(--accent); }
+
+nav { display: flex; gap: 2rem; }
+nav a {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink-muted);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: color 0.2s;
+}
+nav a:hover { color: var(--accent); }
+
+/* ── Hero ── */
+.hero {
+  padding: 6rem 0 5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.hero-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size: 2.8rem;
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--ink);
+  max-width: 720px;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.8rem;
+}
+
+.hero h1 strong {
+  font-weight: 700;
+}
+
+.hero-text {
+  font-size: 1.05rem;
+  color: var(--ink-light);
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+/* ── Sections ── */
+section { padding: 4.5rem 0; }
+section + section { border-top: 1px solid var(--rule); }
+
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-family: var(--serif);
+  font-size: 1.9rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+
+p + p { margin-top: 1rem; }
+
+/* ── Mission statement ── */
+.mission {
+  background: var(--white);
+  border-bottom: 1px solid var(--rule);
+}
+
+.mission-text {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  line-height: 1.65;
+  color: var(--ink-light);
+  max-width: 720px;
+  font-weight: 300;
+}
+
+.mission-text strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ── Research cards ── */
+.research-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.research-card {
+  padding: 2rem;
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  transition: border-color 0.2s;
+}
+
+.research-card:hover { border-color: var(--accent); }
+
+.card-number {
+  font-family: var(--serif);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.research-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+}
+
+.research-card p {
+  font-size: 0.88rem;
+  color: var(--ink-muted);
+  line-height: 1.6;
+}
+
+.card-status {
+  display: inline-block;
+  margin-top: 0.8rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 2px;
+  background: var(--accent-pale);
+  color: var(--accent);
+}
+
+/* ── Frameworks ── */
+.framework-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.framework-item h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.framework-item .abbrev {
+  font-family: var(--serif);
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+
+.framework-item p {
+  font-size: 0.9rem;
+  color: var(--ink-light);
+}
+
+/* ── Diagnostic quantities ── */
+.quantities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+
+.quantity-card {
+  padding: 1.5rem;
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+}
+
+.quantity-card .abbrev {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.3rem;
+}
+
+.quantity-card .name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.quantity-card p {
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+  line-height: 1.55;
+}
+
+/* ── Team ── */
+.team-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2.5rem;
+  align-items: start;
+  margin-top: 2rem;
+}
+
+.team-initials {
+  width: 80px;
+  height: 80px;
+  background: var(--ink);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  border-radius: 3px;
+  letter-spacing: -0.02em;
+}
+
+.team-info h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.2rem;
+}
+
+.team-info .title {
+  font-size: 0.88rem;
+  color: var(--ink-muted);
+  margin-bottom: 0.8rem;
+}
+
+.team-info p {
+  font-size: 0.9rem;
+  color: var(--ink-light);
+  line-height: 1.65;
+}
+
+.team-links {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.team-links a {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.team-links a:hover { border-bottom-color: var(--accent); }
+
+/* ── Contact ── */
+.contact-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.contact-item .label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-muted);
+  margin-bottom: 0.3rem;
+}
+
+.contact-item a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.contact-item a:hover { border-bottom-color: var(--accent); }
+
+/* ── Footer ── */
+footer {
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--rule);
+  background: var(--white);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+}
+
+.footer-inner a {
+  color: var(--ink-muted);
+  text-decoration: none;
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  html { font-size: 15px; }
+  .hero h1 { font-size: 2rem; }
+  .research-grid,
+  .framework-row,
+  .contact-row { grid-template-columns: 1fr; }
+  .quantities-grid { grid-template-columns: 1fr 1fr; }
+  nav { gap: 1rem; }
+  nav a { font-size: 0.75rem; }
+  .team-card { grid-template-columns: 1fr; }
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1, .hero-text, .hero-label {
+  animation: fadeUp 0.6s ease-out both;
+}
+.hero-label { animation-delay: 0.05s; }
+.hero h1 { animation-delay: 0.15s; }
+.hero-text { animation-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- ═══ Header ═══ -->
+<header>
+  <div class="container header-inner">
+    <a href="/" class="logo">Conquer<span>Medical</span></a>
+    <nav>
+      <a href="#research">Research</a>
+      <a href="#frameworks">Frameworks</a>
+      <a href="#team">Team</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ═══ Hero ═══ -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-label">Medical AI Safety Research</div>
+    <h1>Structural safety frameworks for <strong>clinical AI deployment</strong></h1>
+    <p class="hero-text">Conquer Medical develops formal methods to identify, quantify, and prevent structural failures in medical AI systems before they reach patients. Our research programme addresses the gap between AI validation and clinical safety.</p>
+  </div>
+</div>
+
+<!-- ═══ Mission ═══ -->
+<section class="mission">
+  <div class="container">
+    <div class="section-label">Our Position</div>
+    <p class="mission-text">Medical AI is evaluated for <strong>discrimination and calibration</strong>. We argue it must also be evaluated for <strong>treatment-conditional validity</strong>: whether the variables required for a prediction to be clinically meaningful are available, correctly supplied, and structurally sufficient at the point of care. Our research provides the formal tools to make that evaluation possible.</p>
+  </div>
+</section>
+
+<!-- ═══ Research ═══ -->
+<section id="research">
+  <div class="container">
+    <div class="section-label">Research Programme</div>
+    <h2>AI-Based Hypothesis Adjudication</h2>
+    <p>A structural framework for clinical inference, mechanistic testing, and safe medical AI deployment. Five foundational papers establishing the theory, diagnostics, and clinical protocols.</p>
+
+    <div class="research-grid">
+      <div class="research-card">
+        <div class="card-number">Paper 1</div>
+        <h3>When the AI Predicts Progression and Treatment Brings Remission</h3>
+        <p>Three structural failures prevent imaging AI from resolving treatment-conditioned tumour trajectory. Introduces Treatment Blindness Risk and Trajectory Indeterminacy Measure as pre-deployment diagnostics.</p>
+        <div class="card-status">Preprint forthcoming</div>
+      </div>
+
+      <div class="research-card">
+        <div class="card-number">Paper 2</div>
+        <h3>The AI Learned the Wrong Biology</h3>
+        <p>Treatment-induced deformation defeats treatment-aware prediction. Introduces Curvature Shift and Deformation Risk as diagnostic quantities for detecting when the biological law itself has changed.</p>
+        <div class="card-status">Preprint forthcoming</div>
+      </div>
+
+      <div class="research-card">
+        <div class="card-number">Paper 3 &mdash; Flagship</div>
+        <h3>AI as Biological Hypothesis</h3>
+        <p>The paradigm-defining paper. Proposes that AI predictions encode testable biological hypotheses, and introduces Hypothesis Discriminability as the measure of whether data can distinguish competing mechanisms.</p>
+        <div class="card-status">Preprint forthcoming</div>
+      </div>
+
+      <div class="research-card">
+        <div class="card-number">Paper 4</div>
+        <h3>Can Imaging Distinguish Why Treatment Fails?</h3>
+        <p>Applies the AHA framework to competing resistance mechanisms in paediatric glioma. Establishes that mechanistic adjudication is carried by temporal trajectory structure, not local state-space separation.</p>
+        <div class="card-status">Preprint forthcoming</div>
+      </div>
+
+      <div class="research-card">
+        <div class="card-number">Paper 5</div>
+        <h3>Structured Evaluation Prevents Unnecessary Treatment Escalation</h3>
+        <p>A clinical safety protocol based on pre-deployment diagnostic quantities. Introduces Structural SOAP and Extended SOAP as operational checklists for AI-assisted treatment monitoring.</p>
+        <div class="card-status">Preprint forthcoming</div>
+      </div>
+
+      <div class="research-card">
+        <div class="card-number">Forthcoming</div>
+        <h3>Disease Applications</h3>
+        <p>The AHA framework applied to immunotherapy resistance, metastasis prediction, antimicrobial resistance, Long COVID, and other domains where competing mechanistic hypotheses drive treatment decisions.</p>
+        <div class="card-status">In development</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Frameworks ═══ -->
+<section id="frameworks">
+  <div class="container">
+    <div class="section-label">Conceptual Architecture</div>
+    <h2>Two layers of the research programme</h2>
+
+    <div class="framework-row">
+      <div class="framework-item">
+        <h3>AI-Based Hypothesis Adjudication</h3>
+        <div class="abbrev">AHA &mdash; Epistemological Layer</div>
+        <p>The framework for asking: can observable data distinguish between competing biological hypotheses? Provides diagnostic quantities (TBR, TIM, CS, DR, HD) that answer this question formally, before any model is trained or any patient is scanned.</p>
+      </div>
+      <div class="framework-item">
+        <h3>AI as Biological Primitive</h3>
+        <div class="abbrev">ABP &mdash; Representational Layer</div>
+        <p>A multi-agent computational architecture in which each AI agent embodies a specific biological hypothesis. Interactions between agents encode mechanistic claims. Emergent system behaviour becomes the testable prediction. AHA provides the diagnostics; ABP provides the substrate.</p>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top: 3.5rem;">Diagnostic Quantities</div>
+    <h2>Pre-deployment safety tools</h2>
+
+    <div class="quantities-grid">
+      <div class="quantity-card">
+        <div class="abbrev">TBR</div>
+        <div class="name">Treatment Blindness Risk</div>
+        <p>Maximum prediction error from ignoring treatment at a given tumour state. Answers: how much could I be misled?</p>
+      </div>
+      <div class="quantity-card">
+        <div class="abbrev">TIM</div>
+        <div class="name">Trajectory Indeterminacy Measure</div>
+        <p>Severity of treatment-input error. TIM &gt; 1 means opposite-sign dynamics; TIM = 2 means equal-magnitude reversal.</p>
+      </div>
+      <div class="quantity-card">
+        <div class="abbrev">CS</div>
+        <div class="name">Curvature Shift</div>
+        <p>Detects whether treatment has changed the governing biological law, not just the trajectory under that law.</p>
+      </div>
+      <div class="quantity-card">
+        <div class="abbrev">DR</div>
+        <div class="name">Deformation Risk</div>
+        <p>Prediction error from using the pre-treatment law when the post-treatment law has deformed.</p>
+      </div>
+      <div class="quantity-card">
+        <div class="abbrev">HD</div>
+        <div class="name">Hypothesis Discriminability</div>
+        <p>Cohen's d between competing mechanistic hypotheses. Can the available data modality distinguish between them?</p>
+      </div>
+      <div class="quantity-card">
+        <div class="abbrev">SOAP</div>
+        <div class="name">Structural SOAP / Extended SOAP</div>
+        <p>Clinical protocol: State, Operators, Assessment of law, Plan. A safety checklist for AI-assisted treatment monitoring.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Team ═══ -->
+<section id="team">
+  <div class="container">
+    <div class="section-label">Founder</div>
+    <h2>Research leadership</h2>
+
+    <div class="team-card">
+      <div class="team-initials">MAE</div>
+      <div class="team-info">
+        <h3>M. Antony Ewing, PhD</h3>
+        <div class="title">Founder &amp; Research Director, Conquer Medical</div>
+        <p>Princeton-trained researcher working at the intersection of mathematical oncology, causal inference, and clinical AI safety. The AHA research programme develops structural frameworks to ensure that medical AI systems are evaluated not only for statistical performance, but for whether they can support the clinical decisions they are being asked to inform.</p>
+        <p>Conquer Medical is a division of Conquer Risk, focused exclusively on medical AI safety research and translational applications in paediatric oncology.</p>
+        <div class="team-links">
+          <a href="mailto:maewing@alumni.princeton.edu">Email</a>
+          <a href="https://github.com/conquerrisk/conquermedical-site">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Contact ═══ -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Get in Touch</div>
+    <h2>Collaboration &amp; correspondence</h2>
+    <p>We welcome engagement from clinicians, researchers, and institutions interested in structural safety evaluation of medical AI systems.</p>
+
+    <div class="contact-row">
+      <div class="contact-item">
+        <div class="label">Correspondence</div>
+        <p><a href="mailto:maewing@alumni.princeton.edu">maewing@alumni.princeton.edu</a></p>
+      </div>
+      <div class="contact-item">
+        <div class="label">Code &amp; Data</div>
+        <p><a href="https://github.com/BlackCopernicus">github.com/BlackCopernicus</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Footer ═══ -->
+<footer>
+  <div class="container footer-inner">
+    <span>&copy; 2026 Conquer Medical, a division of Conquer Risk</span>
+    <span>All simulation code is open-source</span>
+  </div>
+</footer>
+
+</body>
+</html>
