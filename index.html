@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Conquer Medical | Wearables for AI-Guided Biology</title>
+  <title>Conquer Medical | Patient-Specific Biological Intelligence</title>
   <meta
     name="description"
     content="Conquer Medical designs medical wearables that help AI learn patient-specific biological response to treatment through continuous, non-invasive monitoring."
   />
-  <meta property="og:title" content="Conquer Medical | Wearables for AI-Guided Biology" />
+  <meta property="og:title" content="Conquer Medical | Patient-Specific Biological Intelligence" />
   <meta
     property="og:description"
     content="Wearables that teach AI the patient's biology."
@@ -25,19 +25,19 @@
   <style>
     :root {
       --bg: #05070b;
-      --bg-soft: #0b0f15;
-      --panel: rgba(255,255,255,0.06);
-      --panel-strong: rgba(255,255,255,0.08);
-      --line: rgba(255,255,255,0.12);
+      --bg-soft: #0a0f17;
+      --panel: rgba(255,255,255,0.04);
+      --panel-2: rgba(255,255,255,0.05);
+      --line: rgba(255,255,255,0.09);
       --text: #f5f7fb;
       --muted: rgba(245,247,251,0.72);
-      --soft: rgba(245,247,251,0.54);
+      --soft: rgba(245,247,251,0.5);
       --accent: #9fd3ff;
       --accent-2: #8ef0d1;
-      --shadow: 0 20px 60px rgba(0,0,0,0.35);
       --radius-xl: 28px;
-      --radius-lg: 20px;
-      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --shadow: 0 18px 50px rgba(0,0,0,0.28);
       --max: 1240px;
     }
 
@@ -54,17 +54,13 @@
     body {
       font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top center, rgba(80,120,180,0.14), transparent 26%),
-        linear-gradient(180deg, #070a10 0%, #05070b 100%);
+        radial-gradient(circle at 20% 0%, rgba(90,130,190,0.10), transparent 22%),
+        radial-gradient(circle at 80% 10%, rgba(120,220,190,0.06), transparent 18%),
+        linear-gradient(180deg, #06090f 0%, #05070b 100%);
       color: var(--text);
       line-height: 1.45;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
     }
 
     a {
@@ -72,26 +68,30 @@
       text-decoration: none;
     }
 
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
     .container {
       width: min(100% - 40px, var(--max));
       margin: 0 auto;
     }
 
-    /* Header */
     .site-header {
       position: sticky;
       top: 0;
       z-index: 1000;
       backdrop-filter: blur(18px);
-      background: rgba(5,7,11,0.58);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(5,7,11,0.65);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
     .site-header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       min-height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       gap: 20px;
     }
 
@@ -99,9 +99,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      font-weight: 700;
       letter-spacing: -0.03em;
-      font-size: 1.08rem;
     }
 
     .brand-mark {
@@ -110,10 +108,18 @@
       border-radius: 999px;
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
       box-shadow: 0 0 24px rgba(159,211,255,0.45);
+      flex: 0 0 auto;
     }
 
-    .brand span {
-      color: rgba(255,255,255,0.66);
+    .brand-main {
+      color: var(--text);
+      font-size: 1.08rem;
+      font-weight: 700;
+    }
+
+    .brand-sub {
+      color: rgba(255,255,255,0.46);
+      font-size: 0.92rem;
       font-weight: 500;
     }
 
@@ -136,18 +142,16 @@
     .nav-cta {
       padding: 12px 16px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
       color: var(--text);
     }
 
-    /* Hero */
     .hero {
       position: relative;
-      min-height: 92vh;
+      min-height: 88vh;
       display: flex;
-      align-items: flex-end;
-      overflow: hidden;
+      align-items: center;
     }
 
     .hero::before {
@@ -155,27 +159,16 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(5,7,11,0.72) 0%, rgba(5,7,11,0.42) 42%, rgba(5,7,11,0.76) 100%),
-        linear-gradient(180deg, rgba(5,7,11,0.05) 0%, rgba(5,7,11,0.55) 72%, rgba(5,7,11,0.92) 100%),
-        url("wearables-grid.jpg");
-      background-size: cover;
-      background-position: 18% center;
-      transform: scale(1.02);
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0 0;
-      height: 140px;
-      background: linear-gradient(180deg, rgba(5,7,11,0) 0%, rgba(5,7,11,1) 100%);
+        radial-gradient(circle at 30% 20%, rgba(159,211,255,0.10), transparent 22%),
+        radial-gradient(circle at 75% 30%, rgba(142,240,209,0.08), transparent 20%),
+        linear-gradient(180deg, rgba(5,7,11,0.88) 0%, rgba(5,7,11,0.97) 100%);
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      padding: 120px 0 90px;
-      max-width: 760px;
+      max-width: 820px;
+      padding: 110px 0 80px;
     }
 
     .eyebrow {
@@ -198,18 +191,18 @@
     }
 
     h1 {
-      font-size: clamp(2.8rem, 7vw, 5.8rem);
+      font-size: clamp(2.8rem, 7vw, 5.6rem);
       line-height: 0.95;
       letter-spacing: -0.055em;
       font-weight: 800;
       margin-bottom: 20px;
-      max-width: 820px;
+      max-width: 900px;
     }
 
     .hero-sub {
       font-size: clamp(1.05rem, 2vw, 1.4rem);
       color: var(--muted);
-      max-width: 700px;
+      max-width: 720px;
       line-height: 1.5;
       margin-bottom: 34px;
     }
@@ -230,7 +223,7 @@
       border-radius: 999px;
       font-weight: 600;
       font-size: 0.96rem;
-      transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+      transition: transform 0.18s ease;
     }
 
     .button:hover {
@@ -239,14 +232,14 @@
 
     .button-primary {
       background: linear-gradient(135deg, rgba(159,211,255,0.22), rgba(142,240,209,0.18));
-      border: 1px solid rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.14);
       color: var(--text);
       box-shadow: var(--shadow);
     }
 
     .button-secondary {
       background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.1);
       color: var(--muted);
     }
 
@@ -254,15 +247,23 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
-      max-width: 820px;
+      max-width: 860px;
+    }
+
+    .hero-note-card,
+    .glass-card,
+    .system-card,
+    .product-card,
+    .cta-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.025));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
     }
 
     .hero-note-card {
       padding: 18px 18px 16px;
       border-radius: var(--radius-md);
-      background: rgba(255,255,255,0.045);
-      border: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(14px);
     }
 
     .hero-note-card strong {
@@ -280,9 +281,8 @@
       line-height: 1.45;
     }
 
-    /* Sections */
     .section {
-      padding: 100px 0;
+      padding: 96px 0;
     }
 
     .section-head {
@@ -300,7 +300,7 @@
     }
 
     h2 {
-      font-size: clamp(2rem, 4vw, 3.25rem);
+      font-size: clamp(2rem, 4vw, 3.2rem);
       letter-spacing: -0.045em;
       line-height: 1.02;
       margin-bottom: 14px;
@@ -312,7 +312,6 @@
       line-height: 1.7;
     }
 
-    /* Thesis */
     .thesis-panel {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
@@ -322,10 +321,6 @@
 
     .glass-card {
       border-radius: var(--radius-xl);
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.03));
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(18px);
     }
 
     .thesis-main {
@@ -334,7 +329,7 @@
 
     .thesis-main p {
       color: var(--text);
-      font-size: clamp(1.25rem, 2.2vw, 1.8rem);
+      font-size: clamp(1.2rem, 2.2vw, 1.75rem);
       line-height: 1.45;
       letter-spacing: -0.03em;
     }
@@ -379,7 +374,6 @@
       line-height: 1.5;
     }
 
-    /* Product cards */
     .product-grid {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -387,45 +381,31 @@
     }
 
     .product-card {
-      position: relative;
-      min-height: 420px;
+      grid-column: span 4;
+      border-radius: 24px;
       overflow: hidden;
-      border-radius: 26px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: #0b0f15;
-      box-shadow: var(--shadow);
+      min-height: 100%;
     }
 
     .product-card.large {
       grid-column: span 6;
     }
 
-    .product-card.small {
-      grid-column: span 3;
+    .product-image-wrap {
+      padding: 18px 18px 0;
     }
 
     .product-image {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(180deg, rgba(4,6,10,0.04) 0%, rgba(4,6,10,0.12) 36%, rgba(4,6,10,0.72) 100%),
-        url("wearables-grid.jpg");
-      background-size: cover;
-      background-repeat: no-repeat;
-      transform: scale(1.03);
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
     }
 
-    .helmet { background-position: 15% 42%; }
-    .amulet { background-position: 49% 18%; }
-    .belt   { background-position: 88% 22%; }
-    .patch  { background-position: 50% 84%; }
-    .band   { background-position: 88% 84%; }
-
     .product-overlay {
-      position: absolute;
-      inset: auto 0 0 0;
-      padding: 28px 24px 24px;
-      z-index: 2;
+      padding: 24px 22px 24px;
     }
 
     .product-label {
@@ -439,7 +419,7 @@
     }
 
     .product-card h3 {
-      font-size: 1.6rem;
+      font-size: 1.55rem;
       letter-spacing: -0.04em;
       margin-bottom: 10px;
     }
@@ -448,10 +428,8 @@
       color: var(--muted);
       font-size: 0.98rem;
       line-height: 1.6;
-      max-width: 34ch;
     }
 
-    /* System section */
     .system-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -461,8 +439,6 @@
     .system-card {
       padding: 26px;
       border-radius: var(--radius-lg);
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
     }
 
     .system-card strong {
@@ -475,7 +451,7 @@
     }
 
     .system-card h3 {
-      font-size: 1.3rem;
+      font-size: 1.28rem;
       letter-spacing: -0.03em;
       margin-bottom: 10px;
     }
@@ -486,7 +462,6 @@
       font-size: 0.96rem;
     }
 
-    /* CTA */
     .cta {
       padding-bottom: 120px;
     }
@@ -494,12 +469,10 @@
     .cta-card {
       padding: 40px;
       border-radius: 30px;
-      border: 1px solid rgba(255,255,255,0.1);
-      background:
-        radial-gradient(circle at top left, rgba(159,211,255,0.12), transparent 28%),
-        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      box-shadow: var(--shadow);
       text-align: center;
+      background:
+        radial-gradient(circle at top left, rgba(159,211,255,0.10), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
     }
 
     .cta-card h2 {
@@ -528,23 +501,18 @@
       font-size: 0.92rem;
     }
 
-    /* Responsive */
     @media (max-width: 1100px) {
-      .product-card.large,
-      .product-card.small {
-        grid-column: span 6;
-      }
-
       .thesis-panel {
         grid-template-columns: 1fr;
+      }
+
+      .product-card,
+      .product-card.large {
+        grid-column: span 6;
       }
     }
 
     @media (max-width: 760px) {
-      .site-header-inner {
-        min-height: 70px;
-      }
-
       nav {
         display: none;
       }
@@ -561,8 +529,8 @@
         grid-template-columns: 1fr;
       }
 
-      .product-card.large,
-      .product-card.small {
+      .product-card,
+      .product-card.large {
         grid-column: span 12;
       }
 
@@ -579,6 +547,10 @@
       .footer-inner {
         flex-direction: column;
       }
+
+      .brand-sub {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -588,7 +560,8 @@
     <div class="container site-header-inner">
       <a href="#" class="brand">
         <div class="brand-mark"></div>
-        Conquer Medical <span>/ Conquer Risk</span>
+        <span class="brand-main">Conquer Medical</span>
+        <span class="brand-sub">a division of Conquer Risk</span>
       </a>
 
       <nav>
@@ -667,64 +640,74 @@
   </section>
 
   <section class="section" id="products">
-    <div class="container">
-      <div class="section-head">
-        <div class="section-kicker">Our products</div>
-        <h2>A wearable sensing architecture for adaptive clinical intelligence</h2>
-        <p class="section-copy">
-          Each device is designed to surface biological response in a form that can be monitored continuously,
-          interpreted clinically, and integrated into patient-specific AI systems.
-        </p>
-      </div>
-
-      <div class="product-grid">
-        <article class="product-card large">
-          <div class="product-image helmet"></div>
-          <div class="product-overlay">
-            <div class="product-label">Neural sensing</div>
-            <h3>Soft Node Helmet</h3>
-            <p>High-density biosensing for neural and systemic signal tracking during treatment and recovery.</p>
-          </div>
-        </article>
-
-        <article class="product-card small">
-          <div class="product-image amulet"></div>
-          <div class="product-overlay">
-            <div class="product-label">Multi-organ monitoring</div>
-            <h3>Biosignal Amulet</h3>
-            <p>Discrete continuous monitoring of cardiac, respiratory, chemical, and thermal signals.</p>
-          </div>
-        </article>
-
-        <article class="product-card small">
-          <div class="product-image belt"></div>
-          <div class="product-overlay">
-            <div class="product-label">Core physiology</div>
-            <h3>Adaptive Waist Belt</h3>
-            <p>Tracks abdominal and core physiological dynamics, including temperature and intra-abdominal response.</p>
-          </div>
-        </article>
-
-        <article class="product-card small">
-          <div class="product-image patch"></div>
-          <div class="product-overlay">
-            <div class="product-label">Localized tissue sensing</div>
-            <h3>Flex Patch</h3>
-            <p>Conformal monitoring for tissue oxygenation, inflammation, and muscle-level biological response.</p>
-          </div>
-        </article>
-
-        <article class="product-card small">
-          <div class="product-image band"></div>
-          <div class="product-overlay">
-            <div class="product-label">Mobility analytics</div>
-            <h3>Mobility Band</h3>
-            <p>Captures gait, load, balance, circulation, and hemodynamic response during activity.</p>
-          </div>
-        </article>
-      </div>
+  <div class="container">
+    <div class="section-head">
+      <div class="section-kicker">Our products</div>
+      <h2>A wearable sensing architecture for adaptive clinical intelligence</h2>
+      <p class="section-copy">
+        Each device is designed to surface biological response in a form that can be monitored continuously,
+        interpreted clinically, and integrated into patient-specific AI systems.
+      </p>
     </div>
-  </section>
+
+    <div class="product-grid">
+      <article class="product-card large">
+        <div class="product-image-wrap">
+          <img src="SoftNodeHelmet.jpg" alt="Soft Node Helmet" class="product-image" />
+        </div>
+        <div class="product-overlay">
+          <div class="product-label">Neural sensing</div>
+          <h3>Soft Node Helmet</h3>
+          <p>High-density biosensing for neural and systemic signal tracking during treatment and recovery.</p>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-image-wrap">
+          <img src="BiosignalAmulet.jpg" alt="Biosignal Amulet" class="product-image" />
+        </div>
+        <div class="product-overlay">
+          <div class="product-label">Multi-organ monitoring</div>
+          <h3>Biosignal Amulet</h3>
+          <p>Discrete continuous monitoring of cardiac, respiratory, chemical, and thermal signals.</p>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-image-wrap">
+          <img src="Adaptivewaistbelt.jpg" alt="Adaptive Waist Belt" class="product-image" />
+        </div>
+        <div class="product-overlay">
+          <div class="product-label">Core physiology</div>
+          <h3>Adaptive Waist Belt</h3>
+          <p>Tracks abdominal and core physiological dynamics, including temperature and intra-abdominal response.</p>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-image-wrap">
+          <img src="FlexPatch.jpg" alt="Flex Patch" class="product-image" />
+        </div>
+        <div class="product-overlay">
+          <div class="product-label">Localized tissue sensing</div>
+          <h3>Flex Patch</h3>
+          <p>Conformal monitoring for tissue oxygenation, inflammation, and muscle-level biological response.</p>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-image-wrap">
+          <img src="Mobilityband.jpg" alt="Mobility Band" class="product-image" />
+        </div>
+        <div class="product-overlay">
+          <div class="product-label">Mobility analytics</div>
+          <h3>Mobility Band</h3>
+          <p>Captures gait, load, balance, circulation, and hemodynamic response during activity.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
 
   <section class="section" id="system">
     <div class="container">
@@ -732,8 +715,8 @@
         <div class="section-kicker">System architecture</div>
         <h2>How Conquer Medical works</h2>
         <p class="section-copy">
-          Our approach is not to ask AI to infer missing biology from static data. It is to instrument
-          the patient continuously so treatment response becomes part of the observed state.
+          Our approach is not to ask AI to infer missing biology from static data. It is to instrument the
+          patient continuously so treatment response becomes part of the observed state.
         </p>
       </div>
 
@@ -751,8 +734,8 @@
           <strong>02</strong>
           <h3>Model patient-specific response</h3>
           <p>
-            Continuous data streams allow AI systems to learn how this patient responds, not merely how
-            similar patients were labelled in historical datasets.
+            Continuous data streams allow AI systems to learn how this patient responds, not merely how similar
+            patients were labelled in historical datasets.
           </p>
         </div>
 
@@ -788,9 +771,13 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <span>&copy; 2026 Conquer Medical, a division of Conquer Risk</span>
+      <span>&copy; 2026 Conquer Medical</span>
       <span>Wearable systems for continuous, non-invasive biological response monitoring</span>
     </div>
+  </footer>
+
+</body>
+</html>
   </footer>
 
 </body>
