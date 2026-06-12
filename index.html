@@ -6,12 +6,12 @@
   <title>Conquer Medical | Patient-Specific Biological Intelligence</title>
   <meta
     name="description"
-    content="Conquer Medical designs medical wearables that help AI learn patient-specific biological response to treatment through continuous, non-invasive monitoring."
+    content="Conquer Medical designs research-stage medical wearable concepts intended to help AI learn patient-specific biological response to treatment through continuous, non-invasive monitoring. Not cleared for clinical use."
   />
   <meta property="og:title" content="Conquer Medical | Patient-Specific Biological Intelligence" />
   <meta
     property="og:description"
-    content="Wearables that teach AI the patient's biology."
+    content="Research-stage wearable concepts designed to help AI learn the patient's biology. Not for clinical or diagnostic use."
   />
   <meta property="og:type" content="website" />
 
@@ -312,6 +312,19 @@
       line-height: 1.7;
     }
 
+    /* Quiet, non-alarming status note */
+    .status-note {
+      margin-top: 16px;
+      padding: 14px 18px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,0.03);
+      color: var(--soft);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      max-width: 760px;
+    }
+
     .thesis-panel {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
@@ -385,10 +398,41 @@
       border-radius: 24px;
       overflow: hidden;
       min-height: 100%;
+      position: relative;
     }
 
     .product-card.large {
       grid-column: span 6;
+    }
+
+    /* Small concept tag, styled to match the design language */
+    .concept-tag {
+      position: absolute;
+      top: 28px;
+      right: 28px;
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: rgba(5,7,11,0.6);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(8px);
+      color: var(--muted);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .concept-tag::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(159,211,255,0.6);
     }
 
     .product-image-wrap {
@@ -501,6 +545,14 @@
       font-size: 0.92rem;
     }
 
+    .footer-disclaimer {
+      margin-top: 16px;
+      color: rgba(245,247,251,0.4);
+      font-size: 0.82rem;
+      line-height: 1.6;
+      max-width: 820px;
+    }
+
     @media (max-width: 1100px) {
       .thesis-panel {
         grid-template-columns: 1fr;
@@ -551,6 +603,11 @@
       .brand-sub {
         display: none;
       }
+
+      .concept-tag {
+        top: 24px;
+        right: 24px;
+      }
     }
   </style>
 </head>
@@ -575,27 +632,28 @@
 
   <section class="hero">
     <div class="container hero-content">
-      <div class="eyebrow">Medical wearables for adaptive AI</div>
+      <div class="eyebrow">Research-stage wearable concepts for adaptive AI</div>
 
-      <h1>Wearables that teach AI the patient’s biology</h1>
+      <h1>Wearables designed to teach AI the patient’s biology</h1>
 
       <p class="hero-sub">
-        Continuous, non-invasive monitoring of treatment-conditioned biological response.
+        A research-stage sensing architecture for continuous, non-invasive monitoring of
+        treatment-conditioned biological response.
       </p>
 
       <div class="hero-actions">
-        <a href="#products" class="button button-primary">Explore products</a>
+        <a href="#products" class="button button-primary">Explore the concepts</a>
         <a href="#system" class="button button-secondary">How it works</a>
       </div>
 
       <div class="hero-note">
         <div class="hero-note-card">
           <strong>Thesis</strong>
-          <span>We design medical wearables that help AI learn patient-specific biological response to treatment.</span>
+          <span>We design medical wearable concepts intended to help AI learn patient-specific biological response to treatment.</span>
         </div>
         <div class="hero-note-card">
           <strong>Method</strong>
-          <span>Continuous sensing turns treatment effects into measurable inputs rather than hidden variables.</span>
+          <span>Continuous sensing is intended to turn treatment effects into measurable inputs rather than hidden variables.</span>
         </div>
         <div class="hero-note-card">
           <strong>Goal</strong>
@@ -611,10 +669,10 @@
         <div class="glass-card thesis-main">
           <p>
             AI struggles when the biology that determines patient response is unobserved.
-            We build wearables that make that biology visible.
+            We are designing wearables intended to make that biology visible.
           </p>
           <p>
-            Instead of asking imaging alone to infer future trajectory, Conquer Medical captures
+            Instead of asking imaging alone to infer future trajectory, Conquer Medical’s concepts aim to capture
             the physiological signals through which treatment response is actually expressed:
             neural activity, circulation, respiration, temperature, tissue oxygenation, motion,
             and other continuous markers of biological state.
@@ -642,67 +700,78 @@
   <section class="section" id="products">
   <div class="container">
     <div class="section-head">
-      <div class="section-kicker">Our products</div>
+      <div class="section-kicker">Our concepts</div>
       <h2>A wearable sensing architecture for adaptive clinical intelligence</h2>
       <p class="section-copy">
-        Each device is designed to surface biological response in a form that can be monitored continuously,
+        Each device is designed to surface biological response in a form that could be monitored continuously,
         interpreted clinically, and integrated into patient-specific AI systems.
+      </p>
+      <p class="status-note">
+        The devices shown here are research-stage concepts and engineering designs. They are not medical
+        devices, have not been cleared or approved by any regulatory authority, are not available for sale,
+        and are not for clinical or diagnostic use. Any data collection would be conducted only under
+        applicable ethical, consent, and regulatory oversight.
       </p>
     </div>
 
     <div class="product-grid">
       <article class="product-card large">
+        <span class="concept-tag">Concept · in development</span>
         <div class="product-image-wrap">
-          <img src="SoftNodeHelmet.jpg" alt="Soft Node Helmet" class="product-image" />
+          <img src="SoftNodeHelmet.jpg" alt="Soft Node Helmet concept rendering" class="product-image" />
         </div>
         <div class="product-overlay">
           <div class="product-label">Neural sensing</div>
           <h3>Soft Node Helmet</h3>
-          <p>High-density biosensing for neural and systemic signal tracking during treatment and recovery.</p>
+          <p>Designed for high-density biosensing, intended to track neural and systemic signals during treatment and recovery.</p>
         </div>
       </article>
 
       <article class="product-card">
+        <span class="concept-tag">Concept · in development</span>
         <div class="product-image-wrap">
-          <img src="BiosignalAmulet.jpg" alt="Biosignal Amulet" class="product-image" />
+          <img src="BiosignalAmulet.jpg" alt="Biosignal Amulet concept rendering" class="product-image" />
         </div>
         <div class="product-overlay">
           <div class="product-label">Multi-organ monitoring</div>
           <h3>Biosignal Amulet</h3>
-          <p>Discrete continuous monitoring of cardiac, respiratory, chemical, and thermal signals.</p>
+          <p>Designed for discreet, continuous monitoring, intended to capture cardiac, respiratory, chemical, and thermal signals.</p>
         </div>
       </article>
 
       <article class="product-card">
+        <span class="concept-tag">Concept · in development</span>
         <div class="product-image-wrap">
-          <img src="Adaptivewaistbelt.jpg" alt="Adaptive Waist Belt" class="product-image" />
+          <img src="Adaptivewaistbelt.jpg" alt="Adaptive Waist Belt concept rendering" class="product-image" />
         </div>
         <div class="product-overlay">
           <div class="product-label">Core physiology</div>
           <h3>Adaptive Waist Belt</h3>
-          <p>Tracks abdominal and core physiological dynamics, including temperature and intra-abdominal response.</p>
+          <p>Designed to track abdominal and core physiological dynamics, intended to capture temperature and intra-abdominal response.</p>
         </div>
       </article>
 
       <article class="product-card">
+        <span class="concept-tag">Concept · in development</span>
         <div class="product-image-wrap">
-          <img src="FlexPatch.jpg" alt="Flex Patch" class="product-image" />
+          <img src="FlexPatch.jpg" alt="Flex Patch concept rendering" class="product-image" />
         </div>
         <div class="product-overlay">
           <div class="product-label">Localized tissue sensing</div>
           <h3>Flex Patch</h3>
-          <p>Conformal monitoring for tissue oxygenation, inflammation, and muscle-level biological response.</p>
+          <p>Designed for conformal monitoring, intended to capture tissue oxygenation, inflammation, and muscle-level response.</p>
         </div>
       </article>
 
       <article class="product-card">
+        <span class="concept-tag">Concept · in development</span>
         <div class="product-image-wrap">
-          <img src="Mobilityband.jpg" alt="Mobility Band" class="product-image" />
+          <img src="Mobilityband.jpg" alt="Mobility Band concept rendering" class="product-image" />
         </div>
         <div class="product-overlay">
           <div class="product-label">Mobility analytics</div>
           <h3>Mobility Band</h3>
-          <p>Captures gait, load, balance, circulation, and hemodynamic response during activity.</p>
+          <p>Designed to capture gait, load, balance, circulation, and hemodynamic response during activity.</p>
         </div>
       </article>
     </div>
@@ -713,7 +782,7 @@
     <div class="container">
       <div class="section-head">
         <div class="section-kicker">System architecture</div>
-        <h2>How Conquer Medical works</h2>
+        <h2>How Conquer Medical is designed to work</h2>
         <p class="section-copy">
           Our approach is not to ask AI to infer missing biology from static data. It is to instrument the
           patient continuously so treatment response becomes part of the observed state.
@@ -725,8 +794,8 @@
           <strong>01</strong>
           <h3>Sense continuously</h3>
           <p>
-            Wearables capture longitudinal physiological signals across treatment, activity, rest, and recovery,
-            creating a live record of response dynamics rather than isolated snapshots.
+            The wearables are designed to capture longitudinal physiological signals across treatment, activity,
+            rest, and recovery, creating a live record of response dynamics rather than isolated snapshots.
           </p>
         </div>
 
@@ -734,8 +803,8 @@
           <strong>02</strong>
           <h3>Model patient-specific response</h3>
           <p>
-            Continuous data streams allow AI systems to learn how this patient responds, not merely how similar
-            patients were labelled in historical datasets.
+            Continuous data streams are intended to let AI systems learn how this patient responds, not merely
+            how similar patients were labelled in historical datasets.
           </p>
         </div>
 
@@ -770,15 +839,21 @@
   </section>
 
   <footer class="footer">
-    <div class="container footer-inner">
-      <span>&copy; 2026 Conquer Medical</span>
-      <span>Wearable systems for continuous, non-invasive biological response monitoring</span>
+    <div class="container">
+      <div class="footer-inner">
+        <span>&copy; 2026 Conquer Medical</span>
+        <span>Research-stage wearable concepts for continuous, non-invasive biological response monitoring</span>
+      </div>
+      <p class="footer-disclaimer">
+        Conquer Medical, a division of Conquer Risk. The wearable systems described on this site are
+        research-stage concepts and engineering designs. They are not medical devices, have not been
+        evaluated or cleared by any regulatory authority, are not available for sale, and are not intended
+        for clinical or diagnostic use. Nothing on this site constitutes medical advice. Any future data
+        collection would be conducted only under applicable ethical, informed-consent, and regulatory oversight.
+      </p>
     </div>
   </footer>
 
 </body>
 </html>
-  </footer>
 
-</body>
-</html>
