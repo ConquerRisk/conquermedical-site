@@ -3,1194 +3,319 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Conquer Medical | Patient-Specific Biological Intelligence</title>
-<meta name="description" content="Research-stage wearable concepts for adaptive AI and patient-specific biological monitoring, with a linked medical-AI research program led by M. Antony Ewing, PhD.">
-
+<title>Conquer Medical Health — Precision models built for the individual patient</title>
+<meta name="description" content="AI models, methods, software and wearables for medical research, therapeutics and care — built for the individual patient rather than the population average.">
+<meta property="og:title" content="Conquer Medical Health — Precision models built for the individual patient">
+<meta property="og:description" content="Scientific and clinical AI for drug development, procedural medicine, trials, research instruments and longitudinal sensing.">
+<meta property="og:image" content="https://conquermedical.health/hero.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <style>
 :root{
-  --bg:#071a22;
-  --bg2:#0b2730;
-  --ink:#eef9f7;
-  --muted:#a9c5c3;
-  --line:rgba(220,245,242,.16);
-  --panel:#0d2530;
-  --panel2:#12343d;
-  --accent:#54d2c7;
-  --accent2:#7eb7ff;
-  --soft:#dff6f2;
-  --max:1180px;
-  --r:22px
+  --bg:#05090e; --pane:#0b1620; --pane2:#091320; --edge:#17303f; --edge2:#0f2331;
+  --ink:#eaf4f9; --dim:#93aab8; --faint:#63798a;
+  --cy:#4fd4ff; --gr:#5fe3a6; --am:#ffc857; --vi:#a897ff; --rd:#ff6b7f;
+  --r:14px;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  background:linear-gradient(180deg,var(--bg),#06141b 55%,#081d25);
-  color:var(--ink);
-  line-height:1.55
-}
-a{color:inherit;text-decoration:none}
-.wrap{max-width:var(--max);margin:auto;padding:0 24px}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:-.005em}
+a{color:inherit}
+.wrap{max-width:1180px;margin:auto;padding:0 22px}
 
-header{
-  position:sticky;
-  top:0;
-  z-index:30;
-  background:rgba(7,26,34,.9);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--line)
-}
-nav{
-  height:72px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:18px
-}
-.brand{font-weight:850;letter-spacing:.02em}
-.links{
-  display:flex;
-  gap:20px;
-  align-items:center;
-  color:#c4dcda;
-  font-size:.92rem
-}
-.button{
-  display:inline-flex;
-  padding:11px 17px;
-  border-radius:999px;
-  background:var(--accent);
-  color:#04201f;
-  font-weight:800
-}
-.ghost{
-  background:transparent;
-  color:var(--ink);
-  border:1px solid var(--line)
-}
+/* nav */
+nav{position:sticky;top:0;z-index:50;background:rgba(5,9,14,.86);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--edge2)}
+.navin{max-width:1180px;margin:auto;padding:13px 22px;display:flex;align-items:center;gap:20px;flex-wrap:nowrap}
+.logo{display:flex;align-items:center;gap:11px;margin-right:auto;text-decoration:none;color:inherit}
+.logo .mark{width:34px;height:34px;flex:none}
+.logo .lt{font-weight:650;font-size:16px;letter-spacing:-.02em;line-height:1.15}
+.logo .lt em{display:block;font-style:normal;font-weight:400;font-size:11px;color:var(--faint);letter-spacing:.02em;margin-top:1px}
+.navlinks{display:flex;gap:16px;font-size:14px;color:var(--dim);flex-wrap:wrap}
+.navlinks a{text-decoration:none}
+.navlinks a:hover{color:var(--cy)}
+.cta{border:1px solid #2a6a8f;background:#0b2839;padding:8px 15px;border-radius:8px;
+  font-size:13.5px;text-decoration:none;white-space:nowrap}
+.cta:hover{border-color:var(--cy)}
 
-.hero{padding:100px 0 60px}
-.eyebrow{
-  font-size:.8rem;
-  text-transform:uppercase;
-  letter-spacing:.14em;
-  font-weight:800;
-  color:var(--accent)
-}
-h1{
-  font-size:clamp(3rem,7vw,6.2rem);
-  line-height:.94;
-  letter-spacing:-.055em;
-  margin:14px 0 22px;
-  max-width:1000px
-}
-.lead{
-  max-width:850px;
-  font-size:1.2rem;
-  color:#c8dddb
-}
-.actions{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-top:28px
-}
-.thesis{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:0;
-  border:1px solid var(--line);
-  border-radius:var(--r);
-  overflow:hidden;
-  margin-top:52px;
-  background:linear-gradient(180deg,var(--panel),var(--panel2))
-}
-.thesis div{
-  padding:24px;
-  border-right:1px solid var(--line)
-}
-.thesis div:last-child{border-right:0}
-.thesis strong{display:block;margin-bottom:6px}
+/* hero */
+header{position:relative;overflow:hidden;padding:84px 0 62px;border-bottom:1px solid var(--edge2);
+  background:radial-gradient(120% 90% at 15% -20%,#14293a 0,#05090e 62%)}
+.watermark{position:absolute;right:-70px;top:50%;transform:translateY(-50%);width:520px;height:520px;
+  opacity:.07;pointer-events:none}
+@media(max-width:1080px){.watermark{display:none}}
+h1{font-size:clamp(30px,4.6vw,52px);line-height:1.08;letter-spacing:-.04em;font-weight:640;margin:0 0 22px;max-width:19ch}
+.lede{font-size:clamp(17px,2.1vw,21px);line-height:1.5;color:#bdd2df;max-width:62ch;margin:0 0 18px}
+.lede.strong{font-weight:600;color:var(--ink)}
+.domains{font-size:14px;color:var(--faint);margin:26px 0 30px;letter-spacing:.01em}
+.domains span{color:var(--dim)}
+.herobtns{display:flex;gap:11px;flex-wrap:wrap}
+.btn{border:1px solid #2a6a8f;background:#0b2839;color:var(--ink);padding:12px 20px;border-radius:9px;
+  font-size:15px;text-decoration:none;display:inline-block}
+.btn:hover{border-color:var(--cy)}
+.btn.ghost{background:transparent;border-color:#2a4657}
 
-section{padding:72px 0}
+/* sections */
+section{padding:62px 0;border-bottom:1px solid var(--edge2)}
+.eyebrow{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cy);margin-bottom:9px}
+h2{font-size:clamp(24px,3vw,33px);line-height:1.15;letter-spacing:-.03em;font-weight:620;margin:0 0 14px;max-width:24ch}
+.intro{color:#b3c8d6;max-width:68ch;margin:0 0 30px;font-size:16.5px}
 
-.head{
-  display:grid;
-  grid-template-columns:1fr 1.3fr;
-  gap:44px;
-  margin-bottom:32px
-}
-.head h2{
-  font-size:clamp(2rem,4vw,3.3rem);
-  line-height:1;
-  letter-spacing:-.04em;
-  margin:0
-}
-.head p{margin:0;color:var(--muted)}
+/* number strip */
+.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:26px 0 4px}
+.num{border:1px solid var(--edge);background:var(--pane2);border-radius:11px;padding:15px 16px}
+.num b{display:block;font-size:27px;font-weight:640;letter-spacing:-.035em;line-height:1.1;color:var(--gr)}
+.num span{display:block;font-size:12.5px;color:var(--dim);margin-top:5px;line-height:1.4}
 
-.research-intro{
-  background:linear-gradient(135deg,#0d3340,#102b36);
-  color:var(--ink);
-  border:1px solid var(--line);
-  border-radius:28px;
-  padding:42px;
-  margin-bottom:24px
-}
-.research-intro p{
-  color:#c3dcda;
-  max-width:900px
-}
-.research-intro h2{
-  font-size:clamp(2rem,4vw,3.2rem);
-  margin:0 0 12px;
-  letter-spacing:-.04em
-}
-.theme{padding:28px 0 14px}
-.theme h3{
-  margin:0 0 6px;
-  font-size:1.4rem
-}
-.theme p{
-  margin:0;
-  color:var(--muted);
-  max-width:920px
-}
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:14px}
+.card{background:linear-gradient(180deg,var(--pane),var(--pane2));border:1px solid var(--edge);
+  border-radius:var(--r);padding:20px;display:flex;flex-direction:column}
+.card .tag{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:7px}
+.card h3{font-size:19px;font-weight:620;letter-spacing:-.025em;margin:0 0 8px}
+.card h3 em{font-style:normal;color:var(--dim);font-weight:400}
+.card p{margin:0 0 15px;font-size:14.5px;color:#adc2d1;flex:1}
+.card a.open{font-size:14px;text-decoration:none;color:var(--cy);border-top:1px solid var(--edge2);padding-top:12px}
+.card a.open:hover{color:#fff}
+.card.lead{grid-column:1/-1;background:linear-gradient(160deg,#122236,#0a1420)}
+.card.lead h3{font-size:23px}
+.card.lead p{font-size:16px;max-width:74ch}
 
-.cards{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:18px
-}
-.card{
-  display:block;
-  background:linear-gradient(180deg,var(--panel),#0a2029);
-  border:1px solid var(--line);
-  border-radius:var(--r);
-  padding:26px;
-  transition:transform .18s ease,border-color .18s ease
-}
-.card .tag{
-  color:var(--accent2);
-  font-size:.76rem;
-  text-transform:uppercase;
-  letter-spacing:.1em;
-  font-weight:800
-}
-.card h3{
-  font-size:1.25rem;
-  line-height:1.18;
-  margin:9px 0
-}
-.card p{color:var(--muted);margin:0}
-.card:hover{
-  transform:translateY(-2px);
-  border-color:rgba(126,183,255,.45)
-}
-.paper-actions{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:16px
-}
-.paper-actions span,
-.paper-actions a{
-  font-size:.84rem;
-  font-weight:750;
-  padding:8px 11px;
-  border:1px solid var(--line);
-  border-radius:999px
-}
+.trained{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin:26px 0 -14px}
+.nums{max-width:560px}
+.versus{border:1px solid #35306b;background:#120c26;border-radius:12px;padding:20px 22px;margin:26px 0 0;max-width:70ch}
+.vhead{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--vi);margin-bottom:8px}
+.vnum{font-size:42px;font-weight:640;letter-spacing:-.04em;line-height:1;color:#fff;margin-bottom:10px}
+.vtxt{margin:0 0 14px;font-size:15.5px;color:#d6ccff;max-width:60ch}
+.vlinks{margin:0;font-size:14px}
+.vlinks a{color:var(--cy);text-decoration:none}
+.vlinks a:hover{color:#fff}
 
-.concepts{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:18px
-}
-.concept{
-  background:linear-gradient(180deg,var(--panel),#0a2029);
-  border:1px solid var(--line);
-  border-radius:var(--r);
-  overflow:hidden
-}
-.concept img{
-  display:block;
-  width:100%;
-  aspect-ratio:4/5;
-  object-fit:cover
-}
-.concept-copy{padding:22px}
-.concept-copy h3{
-  margin:5px 0 8px;
-  font-size:1.35rem
-}
-.concept-copy p{margin:0;color:var(--muted)}
-.kicker{
-  font-size:.76rem;
-  text-transform:uppercase;
-  letter-spacing:.1em;
-  color:var(--accent);
-  font-weight:800
-}
+footer{padding:40px 0 56px;color:var(--faint);font-size:13px}
+.footin{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{color:var(--dim);text-decoration:none}
+footer a:hover{color:var(--cy)}
 
-.arch{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px
+@media(max-width:940px){.navlinks{display:none}}
+@media(max-width:640px){
+  header{padding:52px 0 44px}
+  section{padding:44px 0}
+  .navlinks{display:none}
+  .cards{grid-template-columns:1fr}
 }
-.step{
-  background:linear-gradient(180deg,var(--panel),#0a2029);
-  border:1px solid var(--line);
-  border-radius:var(--r);
-  padding:25px
-}
-.step strong{
-  display:block;
-  font-size:2rem;
-  color:var(--accent2)
-}
-.step h3{margin:5px 0 8px}
-.step p{margin:0;color:var(--muted)}
-
-.notice{
-  margin-top:22px;
-  border:1px solid var(--line);
-  background:#0b222b;
-  border-radius:var(--r);
-  padding:24px;
-  color:var(--muted)
-}
-
-.cta{
-  background:linear-gradient(135deg,#0f3340,#162b3f);
-  color:#fff;
-  border:1px solid var(--line);
-  border-radius:28px;
-  padding:40px;
-  display:flex;
-  justify-content:space-between;
-  gap:28px;
-  align-items:center
-}
-.cta h2{
-  font-size:2.6rem;
-  letter-spacing:-.04em;
-  margin:0 0 8px
-}
-.cta p{
-  margin:0;
-  color:#c8ccca;
-  max-width:720px
-}
-
-footer{
-  padding:32px 0 44px;
-  color:#91aeac;
-  font-size:.9rem
-}
-
-@media(max-width:850px){
-  .links a:not(.button){display:none}
-  .head,.cards,.concepts,.arch{grid-template-columns:1fr}
-  .thesis{grid-template-columns:1fr}
-  .thesis div{
-    border-right:0;
-    border-bottom:1px solid var(--line)
-  }
-  .thesis div:last-child{border-bottom:0}
-  .cta{
-    flex-direction:column;
-    align-items:flex-start
-  }
-}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
-
 <body>
 
+<nav><div class="navin">
+  <a class="logo" href="/"><svg class="mark" viewBox="0 0 512 512" aria-hidden="true" fill="none" stroke-linecap="round">
+      <path d="M62 255 H104" stroke="#3ce0c8" stroke-width="22"/>
+      <path d="M172 255 C258 246 340 190 412 116" stroke="#3ce0c8" stroke-width="22"/>
+      <path d="M172 258 C256 272 336 320 408 394" stroke="#0d5f6b" stroke-width="22"/>
+      <circle cx="140" cy="255" r="29" fill="#3ce0c8"/>
+    </svg><span class="lt">Conquer Medical Health<em>Scientific and clinical AI</em></span></a>
+  <div class="navlinks">
+    <a href="#therapeutics">Drug development</a>
+    <a href="#procedural">Procedural</a>
+    <a href="#trials">Trials</a>
+    <a href="#research">Instruments</a>
+    <a href="#sensing">Wearables</a>
+  </div>
+  <a class="cta" href="/cmh-scientific/">CMH Scientific R&amp;D</a>
+</div></nav>
+
 <header>
+  <svg class="watermark" viewBox="0 0 512 512" aria-hidden="true" fill="none" stroke-linecap="round">
+      <path d="M62 255 H104" stroke="#3ce0c8" stroke-width="22"/>
+      <path d="M172 255 C258 246 340 190 412 116" stroke="#3ce0c8" stroke-width="22"/>
+      <path d="M172 258 C256 272 336 320 408 394" stroke="#0d5f6b" stroke-width="22"/>
+      <circle cx="140" cy="255" r="29" fill="#3ce0c8"/>
+    </svg>
   <div class="wrap">
-    <nav>
-      <a class="brand" href="#top">
-        Conquer Medical
-        <span style="font-weight:500">a division of Conquer Risk</span>
-      </a>
-
-      <div class="links">
-        <a href="#research">Research</a>
-        <a href="#products">Products</a>
-        <a href="#system">System</a>
-        <a href="https://conquerrisk.com" target="_blank" rel="noopener">Conquer Risk</a>
-        <a class="button" href="#contact">Contact</a>
-      </div>
-    </nav>
+  <h1>Precision models built for the individual patient</h1>
+  <p class="lede strong">Individualized AI models, methods, software and wearables for medical research, therapeutics and care.</p>
+  <p class="lede">Doctors treat one patient at a time. But almost every clinical model treats patients as group members. We close that gap: we build software and wearables that collect data from the individual patient, and instruments that can distinguish treatment from biological response.</p>
+  <p class="domains">For <span>drug discovery, design and development</span> · <span>procedural medicine</span> · <span>clinical trials</span> · <span>patient care</span></p>
+  <div class="herobtns">
+    <a class="btn" href="#therapeutics">See the instruments</a>
+    <a class="btn ghost" href="/cmh-scientific/">Enter CMH Scientific R&amp;D</a>
   </div>
-</header>
+</div></header>
 
-<main id="top">
+<!-- ============ DRUG DEVELOPMENT ============ -->
+<section id="therapeutics"><div class="wrap">
+  <div class="eyebrow">Drug discovery, design and development</div>
+  <h2>Most clinical models are built on patient averages. Patients are not averages.</h2>
+  <p class="intro">Digital twins and related technologies for drug discovery, design and development are built on averages — a reference cohort supplies the answer and the individual is scored against it. AI as a Biological Primitive (ABP) inverts that. It assigns an AI to each relevant component of a patient's system and learns its biology from that system's own responses, then interrogates the result in reverse: specify the state you want, and it returns the interventions that patient's record actually supports.</p>
 
-<section class="hero">
-  <div class="wrap">
-
-    <div class="eyebrow">
-      Research-stage wearable concepts for adaptive AI
-    </div>
-
-    <h1>Wearables designed to teach AI the patient’s biology</h1>
-
-    <p class="lead">
-      A research-stage sensing architecture for continuous, non-invasive
-      monitoring of treatment-conditioned biological response.
-    </p>
-
-    <div class="actions">
-      <a class="button" href="#products">Explore the concepts</a>
-      <a class="button ghost" href="#system">How it works</a>
-      <a class="button ghost" href="#research">Research</a>
-    </div>
-
-    <div class="thesis">
-      <div>
-        <strong>Thesis</strong>
-        We design medical wearable concepts intended to help AI learn
-        patient-specific biological response to treatment.
-      </div>
-
-      <div>
-        <strong>Method</strong>
-        Continuous sensing is intended to turn treatment effects into
-        measurable inputs rather than hidden variables.
-      </div>
-
-      <div>
-        <strong>Goal</strong>
-        Make prognosis more specific, more adaptive, and less dependent
-        on one-time snapshots.
-      </div>
-    </div>
-
-    <div style="max-width:940px;margin-top:36px">
-
-      <p>
-        AI struggles when the biology that determines patient response is
-        unobserved. We are designing wearables intended to make that biology
-        visible.
-      </p>
-
-      <p>
-        Instead of asking imaging alone to infer future trajectory, Conquer
-        Medical’s concepts aim to capture the physiological signals through
-        which treatment response is actually expressed: neural activity,
-        circulation, respiration, temperature, tissue oxygenation, motion,
-        and other continuous markers of biological state.
-      </p>
-
-      <p>
-        <strong>From snapshot to stream</strong>
-        Move from one-time diagnostic state toward continuous response-aware
-        monitoring.
-      </p>
-
-      <p>
-        <strong>From generic to patient-specific</strong>
-        Train systems on the patient’s own evolving biology, not just
-        population averages.
-      </p>
-
-      <p>
-        <strong>From hidden context to measured context</strong>
-        Capture the treatment-conditioned variables conventional AI is
-        forced to guess.
-      </p>
-
-    </div>
-  </div>
-</section>
-
-
-<section id="research">
-<div class="wrap">
-
-  <div class="research-intro">
-
-    <div class="eyebrow" style="color:var(--accent)">
-      Research program
-    </div>
-
-    <h2>Research underlying the sensing architecture</h2>
-
-    <p>
-      The wearable concepts sit within a broader medical-AI research program
-      on information sufficiency, intervention-aware intelligence, patient
-      trajectories, scientific reproduction, and AI governance. The research
-      asks what information the available substrate can support, when
-      intervention changes the relationship being modeled, and what additional
-      measurement is required when the existing record is insufficient.
-    </p>
-
+  <p class="trained">Trained on</p>
+  <div class="nums">
+    <div class="num"><b>1.4M+</b><span>individual observations</span></div>
+    <div class="num"><b>3 scales</b><span>individual patients, cell populations, whole populations</span></div>
   </div>
 
-
-  <div class="theme">
-    <h3>Information sufficiency and model assurance</h3>
-    <p>
-      Work in this area tests the information available to a model before
-      crediting or blaming model sophistication, and distinguishes observer
-      limitations from limits of the instrument, representation, or data
-      substrate.
-    </p>
+  <div class="versus">
+    <div class="vhead">Digital twins versus ABP</div>
+    <div class="vnum">24.5%</div>
+    <p class="vtxt">ONLY 24.5% of the time did the population average model agree with ABP, which was based on individual biology. Personalising a population model is not the same as modelling the person.</p>
+    <p class="vlinks"><a href="/cmh-scientific/papers/abp/">Read the white paper</a> · <a href="https://doi.org/10.21203/rs.3.rs-10898489/v1">Read the study</a></p>
   </div>
+
+  <div class="cards" style="margin-top:26px">
+    <div class="card lead">
+      <div class="tag">Therapeutic strategy</div>
+      <h3>ABP <em>· AI as a Biological Primitive</em></h3>
+      <p>Which drug, at what dose, on what schedule, in whom — and where the risk sits. ABP tests each option against a model of the individual patient, and refuses to recommend anything that patient's own history does not support. That refusal is the point: a population model will answer any question you ask it.</p>
+      <a class="open" href="/cmh-scientific/demos/ABP/">Open the ABP demo →</a>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ PROCEDURAL ============ -->
+<section id="procedural"><div class="wrap">
+  <div class="eyebrow">Procedural medicine</div>
+  <h2>A surgeon is operating on this patient, not on a cohort.</h2>
+  <p class="intro">During a procedure the question is not what usually happens. It is whether this patient's response has changed, and whether the view supports the call being made. Deferra separates a poor picture from a departed course from a changed response — three situations that look identical on a monitor and call for opposite actions.</p>
 
   <div class="cards">
+    <div class="card">
+      <div class="tag">Surgery</div>
+      <h3>Deferra <em>· Surgery</em></h3>
+      <p>Decides when an AI system should assist, hold back, or say nothing as a procedure evolves — and when the view cannot support the call, tells the surgeon what to correct rather than simply going quiet. Its default state is silence.</p>
+      <a class="open" href="/cmh-scientific/demos/Deferra-Surgery/">Open the surgical demo →</a>
+    </div>
+    <div class="card">
+      <div class="tag">Anesthesiology</div>
+      <h3>Deferra <em>· Anesthesiology</em></h3>
+      <p>The same logic under anesthesia. Every dose changes how the patient responds. Deferra watches for a change in the response itself, not for a number crossing a line.</p>
+      <a class="open" href="/cmh-scientific/demos/Deferra-Anesthesiology/">Open the anesthesiology demo →</a>
+    </div>
+    <div class="card">
+      <div class="tag">Intervention design</div>
+      <h3>ABP <em>· Clinical intervention</em></h3>
+      <p>Builds a model of one biological system from that system's own longitudinal history, then interrogates it in reverse to identify supported intervention directions and levels for that patient.</p>
+      <a class="open" href="/cmh-scientific/demos/ABP/">Open the intervention demo →</a>
+    </div>
+  </div>
+</div></section>
 
-    <a class="card"
-       href="https://doi.org/10.21203/rs.3.rs-10283069/v1"
-       target="_blank"
-       rel="noopener">
+<!-- ============ TRIALS ============ -->
+<section id="trials"><div class="wrap">
+  <div class="eyebrow">Clinical trials</div>
+  <h2>A trial tells you what happened on average. It does not tell you what happened to a patient.</h2>
+  <p class="intro">Methods that compare a patient against a model-derived expectation can produce large groups of apparent responders and apparently harmed patients even when the treatment did nothing at all. CTF tests whether those groups are real by running the identical procedure on patients who received placebo — who cannot have responded to a drug they never got.</p>
 
-      <div class="tag">Research Square • DOI</div>
-
-      <h3>
-        Information Limits Constrain Medical AI Claims Beyond Model Sophistication
-      </h3>
-
-      <p>
-        A model-agnostic predeployment framework for testing whether the data
-        contain enough information to support a medical-AI claim.
-      </p>
-
-      <div class="paper-actions">
-        <span>Open DOI</span>
-      </div>
-    </a>
-
-
-    <article class="card">
-
-      <div class="tag">
-        Research Square • Under editorial screening
-      </div>
-
-      <h3>
-        Intelligence Cannot Recover What the Instrument Does Not Record
-      </h3>
-
-      <p>
-        Empirical information ceilings, representation geometry, acquisition
-        latency, transport failure, and selective abstention in simultaneous
-        optical and electrical neural measurement.
-      </p>
-
-      <div class="paper-actions">
-        <span>Available upon request</span>
-      </div>
-
-    </article>
-
-
-    <a class="card"
-       href="https://doi.org/10.64898/2026.06.14.732129"
-       target="_blank"
-       rel="noopener">
-
-      <div class="tag">Preprint • DOI</div>
-
-      <h3>
-        Metrics for Evaluating Biological AI Model Prediction Accuracy at the
-        Data-Substrate Level
-      </h3>
-
-      <p>
-        Tests whether apparent model accuracy is supported by the structure
-        and identifiability of the biological data substrate.
-      </p>
-
-      <div class="paper-actions">
-        <span>Open DOI</span>
-      </div>
-
-    </a>
-
-
-    <a class="card"
-       href="https://doi.org/10.64898/2026.06.24.733252"
-       target="_blank"
-       rel="noopener">
-
-      <div class="tag">Preprint • DOI</div>
-
-      <h3>
-        Metrics for Distinguishing Biological and Interventional Change in AI Models
-      </h3>
-
-      <p>
-        Separates changes arising from underlying biology from changes induced
-        by intervention or the decision system itself.
-      </p>
-
-      <div class="paper-actions">
-        <span>Open DOI</span>
-      </div>
-
-    </a>
-
+  <div class="nums">
+    <div class="num"><b>36.8%</b><span>of treated patients labelled favourable responders by a standard residual method</span></div>
+    <div class="num"><b>33.5%</b><span>of placebo patients labelled the same way, by the same method</span></div>
+    <div class="num"><b>2,445</b><span>patients across 38 trials</span></div>
   </div>
 
-
-  <div class="theme">
-    <h3>Intervention-aware clinician-AI systems</h3>
-    <p>
-      These studies ask what happens when treatment changes the system being
-      predicted, and how AI should behave when the pre-intervention relationship
-      is no longer reliable.
-    </p>
+  <div class="cards" style="margin-top:26px">
+    <div class="card lead">
+      <div class="tag">Falsification</div>
+      <h3>CTF <em>· Clinical Trial Falsifier</em></h3>
+      <p>Tests whether an apparent responder subgroup survives its own negative control — before a trial is designed around it. Stress-tests what a design can actually falsify, and separates a population-level result from stronger claims about individuals, subgroups or mechanism.</p>
+      <a class="open" href="/cmh-scientific/demos/CTF/">Open the CTF demo →</a>
+    </div>
   </div>
+</div></section>
 
+<!-- ============ RESEARCH ============ -->
+<section id="research"><div class="wrap">
+  <div class="eyebrow">Research and measurement instruments</div>
+  <h2>Before you build a model, find out whether the data can answer the question.</h2>
+  <p class="intro">These instruments sit upstream of modelling. They determine what a measurement can support, what data to acquire next, which turning points must be remembered, and when a system should act — or decline to.</p>
 
   <div class="cards">
-
-    <a class="card"
-       href="https://doi.org/10.21203/rs.3.rs-10283184/v1"
-       target="_blank"
-       rel="noopener">
-
-      <div class="tag">Research Square • DOI</div>
-
-      <h3>Intelligence Breaks the System It Controls</h3>
-
-      <p>
-        Across more than 75,000 patients and 7.8 million observations, tests
-        when intervention creates missing information shared by clinician
-        and AI.
-      </p>
-
-      <div class="paper-actions">
-        <span>Open DOI</span>
-      </div>
-
-    </a>
-
-
-    <article class="card">
-
-      <div class="tag">
-        Research Square • Under editorial screening
-      </div>
-
-      <h3>Intelligence Preserves the System It Assists</h3>
-
-      <p>
-        Tests response-history instrumentation and selective clinician-AI
-        collaboration when useful information survives intervention but is
-        distributed unevenly across observers.
-      </p>
-
-      <div class="paper-actions">
-        <span>Available upon request</span>
-      </div>
-
-    </article>
-
-
-    <article class="card">
-
-      <div class="tag">Completed manuscript</div>
-
-      <h3>
-        Prediction Error Masquerades as Individual Treatment Response
-      </h3>
-
-      <p>
-        Uses placebo-controlled pooled ALS trials to test when prognostic
-        error is misread as individualized treatment response.
-      </p>
-
-      <div class="paper-actions">
-        <span>Available upon request</span>
-      </div>
-
-    </article>
-
-
-    <article class="card">
-
-      <div class="tag">Completed manuscript</div>
-
-      <h3>
-        Serial Patient Data Can Mislead Predictive AI When Futures Are Ambiguous
-      </h3>
-
-      <p>
-        Tests when longitudinal data improve prediction and when they simply
-        provide more observations of an under-identified state.
-      </p>
-
-      <div class="paper-actions">
-        <span>Available upon request</span>
-      </div>
-
-    </article>
-
+    <div class="card">
+      <div class="tag">Image and acquisition design</div>
+      <h3>OptiCeil</h3>
+      <p>Say what you need to see, and OptiCeil returns the imaging setup that will show it — and the one thing standing in the way when it cannot. It reads the recording in front of it rather than a population average.</p>
+      <a class="open" href="/cmh-scientific/demos/OptiCeil/">Open the OptiCeil demo →</a>
+    </div>
+    <div class="card">
+      <div class="tag">Information sufficiency</div>
+      <h3>NPIS</h3>
+      <p>Tells you, before anything is built, whether the data contain the distinction you are asking for — and if not, what would have to be measured for them to.</p>
+      <a class="open" href="/cmh-scientific/demos/NPIS/">Open the NPIS demo →</a>
+    </div>
+    <div class="card">
+      <div class="tag">Structural memory</div>
+      <h3>TotemicAI</h3>
+      <p>Marks the moments where a patient's course actually turned — the points you would need to reconstruct the path rather than average it away — and flags when new data breaks what was stored. <strong style="color:var(--ink)">TotemicAI-Specified</strong> uses a declared structural scoring policy; <strong style="color:var(--ink)">TotemicAI-Learned</strong> fits the weighting policy from training data before compiling the landmark memory. Current public AML validation is for the Specified mode; Learned is evaluated separately under patient-held-out validation.</p>
+      <a class="open" href="/cmh-scientific/demos/TotemicAI/">Open the TotemicAI demo →</a>
+      <a class="open" href="/cmh-scientific/papers/totemicai/" style="border-top:0;padding-top:5px">Read the TotemicAI technical report →</a>
+    </div>
+    <div class="card">
+      <div class="tag">Adaptive measurement</div>
+      <h3>Acquire</h3>
+      <p>Determines what data to acquire next, in whom, and at what point further measurement stops earning its cost. In one study, measuring 30% of patients captured 71% of the value of measuring all of them.</p>
+      <a class="open" href="/cmh-scientific/demos/Acquire/">Open the Acquire demo →</a>
+    </div>
+    <div class="card">
+      <div class="tag">Field-scale reconstruction</div>
+      <h3>AIO <em>· AI On…</em></h3>
+      <p>Takes a field's published claims, reruns them on one common dataset under one protocol, and reports which reproduce and which competing explanations the data can actually tell apart. Applied to the whole Alzheimer disease literature.</p>
+      <a class="open" href="/cmh-scientific/demos/AIO/">Open the AIO demo →</a>
+    </div>
+    <div class="card">
+      <div class="tag">Scientific control</div>
+      <h3>TopolAI</h3>
+      <p>Returns a decision rather than a score: use it, keep going, acquire selectively, change the measurement, add a modality, reacquire, or abstain.</p>
+      <a class="open" href="/cmh-scientific/demos/TopolAI/">Open the TopolAI demo →</a>
+    </div>
   </div>
+</div></section>
 
-
-  <div class="theme">
-
-    <h3>Disease trajectories, oncology, and biological inversion</h3>
-
-    <p>
-      This branch asks whether adverse biological states remain redirectable
-      and whether learned biological systems can be interrogated for
-      substrate-supported candidate intervention ranges.
-    </p>
-
-  </div>
-
+<!-- ============ SENSING ============ -->
+<section id="sensing"><div class="wrap">
+  <div class="eyebrow">Wearables and longitudinal sensing</div>
+  <h2>An individual model needs individual data.</h2>
+  <p class="intro">Modelling one patient requires enough of that patient's own history to learn from. Continuous sensing is what makes it possible — and what you measure determines what can be recovered. On the same wearable recordings, adding motion sensing improved the result where changing the model had not: what you measure matters more than which model reads it.</p>
 
   <div class="cards">
-
-    <article class="card">
-
-      <div class="tag">Completed manuscript</div>
-
-      <h3>Disease Is Not Destiny</h3>
-
-      <p>
-        Measures reversal potential across adverse biomedical trajectories
-        and tests how often present severity fails to uniquely determine
-        future course.
-      </p>
-
-      <div class="paper-actions">
-        <span>Available upon request</span>
-      </div>
-
-    </article>
-
-
-    <article class="card">
-
-      <div class="tag">Completed manuscript</div>
-
-      <h3>
-        AI as a Biological Primitive Enables Targeted Inversion Across Disease,
-        Population, and Neuronal Systems
-      </h3>
-
-      <p>
-        Trains AI on observed system response and interrogates the learned
-        object in reverse for candidate intervention ranges represented by
-        the substrate.
-      </p>
-
-      <div class="paper-actions">
-        <span>Available upon request</span>
-      </div>
-
-    </article>
-
-
-    <a class="card"
-       href="https://doi.org/10.2139/ssrn.6555030"
-       target="_blank"
-       rel="noopener">
-
-      <div class="tag">SSRN • DOI</div>
-
-      <h3>
-        Diagnostic-Prognostic Limits and Pre-Deployment Diagnostics for
-        AI-Assisted Tumor Monitoring: A Pediatric Glioma Study
-      </h3>
-
-      <p>
-        Tests whether serial tumor data contain enough information for
-        prognosis rather than diagnosis alone.
-      </p>
-
-      <div class="paper-actions">
-        <span>Open DOI</span>
-      </div>
-
-    </a>
-
-
-    <article class="card">
-
-      <div class="tag">Completed manuscript</div>
-
-      <h3>
-        AI as a Biological Primitive: Optimal Intervention Inversion in
-        Pediatric Glioma
-      </h3>
-
-      <p>
-        Applies constrained inversion to a simulated tumor primitive to
-        identify substrate-supported candidate redirection surfaces.
-      </p>
-
-      <div class="paper-actions">
-        <span>Available upon request</span>
-      </div>
-
-    </article>
-
-  </div>
-
-
-  <div class="theme">
-
-    <h3>AI as a scientific instrument</h3>
-
-    <p>
-      Rather than using AI only to predict patients, this work uses AI to
-      reconstruct, reproduce, compare, and adjudicate scientific claims at
-      field scale.
-    </p>
-
-  </div>
-
-
-  <div class="cards">
-
-    <a class="card"
-       href="https://doi.org/10.21203/rs.3.rs-10282922/v1"
-       target="_blank"
-       rel="noopener">
-
-      <div class="tag">Research Square • DOI</div>
-
-      <h3>
-        AI on Alzheimer Disease: Large-Scale Reproduction Shows the Field’s
-        Hypotheses Cannot Be Distinguished on Common Data
-      </h3>
-
-      <p>
-        An LLM-supervised evidence pipeline screened 95,756 publications and
-        reconstructed 10,884 data-bearing studies under common protocols.
-      </p>
-
-      <div class="paper-actions">
-        <span>Open DOI</span>
-      </div>
-
-    </a>
-
-
-    <article class="card">
-
-      <div class="tag">Completed manuscript</div>
-
-      <h3>
-        AI-Assisted Study Design: Claim-Specific Substrate Requirements for
-        Reliable Biomedical AI
-      </h3>
-
-      <p>
-        Classifies biomedical studies against a claim-specific taxonomy
-        linking scientific questions to the data structures required to
-        support them.
-      </p>
-
-      <div class="paper-actions">
-        <span>Available upon request</span>
-      </div>
-
-    </article>
-
-
-    <article class="card">
-
-      <div class="tag">Completed manuscript</div>
-
-      <h3>Multimodal Validation Failure in Alzheimer Disease Prediction</h3>
-
-      <p>
-        Tests whether adding modalities resolves clinically meaningful
-        uncertainty or merely hides disagreement among evidence blocks.
-      </p>
-
-      <div class="paper-actions">
-        <span>Available upon request</span>
-      </div>
-
-    </article>
-
-
-    <article class="card">
-
-      <div class="tag">Completed manuscript</div>
-
-      <h3>Limits of Transportability in Clinical AI</h3>
-
-      <p>
-        Examines where apparently strong models stop transporting across
-        populations, institutions, and measurement regimes.
-      </p>
-
-      <div class="paper-actions">
-        <span>Available upon request</span>
-      </div>
-
-    </article>
-
-  </div>
-
-
-  <div class="theme">
-
-    <h3>AI governance and systemic risk</h3>
-
-    <p>
-      Medical-AI reliability sits inside a larger governance problem:
-      common representations and concentrated model infrastructure can
-      create correlated institutional behavior and common-mode failure.
-    </p>
-
-  </div>
-
-
-  <div class="cards">
-
-    <a class="card"
-       href="https://doi.org/10.2139/ssrn.6931098"
-       target="_blank"
-       rel="noopener">
-
-      <div class="tag">SSRN • DOI</div>
-
-      <h3>
-        Nash Drift: Representational Closure and the Governance of Strategic Interaction
-      </h3>
-
-      <p>
-        Examines strategic interaction when participants increasingly act
-        through shared model representations.
-      </p>
-
-      <div class="paper-actions">
-        <span>Open DOI</span>
-      </div>
-
-    </a>
-
-
-    <a class="card"
-       href="https://doi.org/10.2139/ssrn.6995258"
-       target="_blank"
-       rel="noopener">
-
-      <div class="tag">SSRN • DOI</div>
-
-      <h3>The Systemic Risk of AI</h3>
-
-      <p>
-        Models immediate and propagated losses arising from institutional
-        dependence on common frontier-AI infrastructure.
-      </p>
-
-      <div class="paper-actions">
-        <span>Open DOI</span>
-      </div>
-
-    </a>
-
-  </div>
-
-</div>
-</section>
-
-
-<section id="products">
-<div class="wrap">
-
-  <div class="head">
-
-    <h2>
-      A wearable sensing architecture for adaptive clinical intelligence
-    </h2>
-
-    <p>
-      Each device is designed to surface biological response in a form that
-      could be monitored continuously, interpreted clinically, and integrated
-      into patient-specific AI systems.
-    </p>
-
-  </div>
-
-
-  <div class="notice" style="margin-bottom:22px">
-    The devices shown here are research-stage concepts and engineering designs.
-    They are not medical devices, have not been cleared or approved by any
-    regulatory authority, are not available for sale, and are not for clinical
-    or diagnostic use. Any data collection would be conducted only under
-    applicable ethical, consent, and regulatory oversight.
-  </div>
-
-
-  <div class="concepts">
-
-    <article class="concept">
-
-      <img src="SoftNodeHelmet.jpg"
-           alt="Soft Node Helmet concept rendering">
-
-      <div class="concept-copy">
-
-        <div class="kicker">
-          Concept · in development · Neural sensing
-        </div>
-
-        <h3>Soft Node Helmet</h3>
-
-        <p>
-          Designed for high-density biosensing, intended to track neural and
-          systemic signals during treatment and recovery.
-        </p>
-
-      </div>
-
-    </article>
-
-
-    <article class="concept">
-
-      <img src="BiosignalAmulet.jpg"
-           alt="Biosignal Amulet concept rendering">
-
-      <div class="concept-copy">
-
-        <div class="kicker">
-          Concept · in development · Multi-organ monitoring
-        </div>
-
-        <h3>Biosignal Amulet</h3>
-
-        <p>
-          Designed for discreet, continuous monitoring, intended to capture
-          cardiac, respiratory, chemical, and thermal signals.
-        </p>
-
-      </div>
-
-    </article>
-
-
-    <article class="concept">
-
-      <img src="Adaptivewaistbelt.jpg"
-           alt="Adaptive Waist Belt concept rendering">
-
-      <div class="concept-copy">
-
-        <div class="kicker">
-          Concept · in development · Core physiology
-        </div>
-
-        <h3>Adaptive Waist Belt</h3>
-
-        <p>
-          Designed to track abdominal and core physiological dynamics,
-          intended to capture temperature and intra-abdominal response.
-        </p>
-
-      </div>
-
-    </article>
-
-
-    <article class="concept">
-
-      <img src="FlexPatch.jpg"
-           alt="Flex Patch concept rendering">
-
-      <div class="concept-copy">
-
-        <div class="kicker">
-          Concept · in development · Localized tissue sensing
-        </div>
-
-        <h3>Flex Patch</h3>
-
-        <p>
-          Designed for conformal monitoring, intended to capture tissue
-          oxygenation, inflammation, and muscle-level response.
-        </p>
-
-      </div>
-
-    </article>
-
-
-    <article class="concept">
-
-      <img src="Mobilityband.jpg"
-           alt="Mobility Band concept rendering">
-
-      <div class="concept-copy">
-
-        <div class="kicker">
-          Concept · in development · Mobility analytics
-        </div>
-
-        <h3>Mobility Band</h3>
-
-        <p>
-          Designed to capture gait, load, balance, circulation, and
-          hemodynamic response during activity.
-        </p>
-
-      </div>
-
-    </article>
-
-  </div>
-
-</div>
-</section>
-
-
-<section id="system">
-<div class="wrap">
-
-  <div class="head">
-
-    <h2>How Conquer Medical is designed to work</h2>
-
-    <p>
-      Our approach is not to ask AI to infer missing biology from static data.
-      It is to instrument the patient continuously so treatment response
-      becomes part of the observed state.
-    </p>
-
-  </div>
-
-
-  <div class="arch">
-
-    <div class="step">
-
-      <strong>01</strong>
-
-      <h3>Sense continuously</h3>
-
-      <p>
-        The wearables are designed to capture longitudinal physiological
-        signals across treatment, activity, rest, and recovery, creating
-        a live record of response dynamics rather than isolated snapshots.
-      </p>
-
+    <div class="card lead">
+      <div class="tag">Continuous measurement</div>
+      <h3>Sensing for patient-specific biological state</h3>
+      <p>Wearables, continuous glucose monitoring, photoplethysmography and physiologic waveform capture, evaluated for what they can actually support rather than for how much they collect. The instruments above determine which signal is worth adding before it is deployed.</p>
+      <a class="open" href="/cmh-scientific/demos/">See the measurement instruments →</a>
     </div>
-
-
-    <div class="step">
-
-      <strong>02</strong>
-
-      <h3>Model patient-specific response</h3>
-
-      <p>
-        Continuous data streams are intended to let AI systems learn how this
-        patient responds, not merely how similar patients were labelled in
-        historical datasets.
-      </p>
-
-    </div>
-
-
-    <div class="step">
-
-      <strong>03</strong>
-
-      <h3>Support adaptive care</h3>
-
-      <p>
-        The aim is safer and more specific monitoring of treatment-conditioned
-        biology in oncology, neurology, and other settings where trajectory
-        matters as much as diagnosis.
-      </p>
-
-    </div>
-
   </div>
+</div></section>
 
-</div>
-</section>
-
-
-<section id="contact">
-<div class="wrap">
-
-  <div class="cta">
-
-    <div>
-
-      <div class="eyebrow" style="color:var(--accent)">
-        Contact
-      </div>
-
-      <h2>Building the next layer of clinical intelligence</h2>
-
-      <p>
-        We welcome conversation with clinicians, engineers, translational
-        researchers, and strategic partners interested in wearable systems
-        for patient-specific biological monitoring.
-      </p>
-
-    </div>
-
-
-    <div class="actions">
-
-      <a class="button"
-         style="background:var(--soft);color:#06211f"
-         href="mailto:mae@conquermedical.health">
-        mae@conquermedical.health
-      </a>
-
-      <a class="button ghost"
-         style="color:#fff;border-color:var(--line)"
-         href="https://conquerrisk.com"
-         target="_blank"
-         rel="noopener">
-        Conquer Risk
-      </a>
-
-    </div>
-
+<!-- ============ CMH SCIENTIFIC ============ -->
+<section id="scientific"><div class="wrap">
+  <div style="display:flex;align-items:center;gap:16px;margin-bottom:12px">
+    <img src="/avatar_dark.png" alt="CMH Scientific mark" width="72" height="72" style="width:72px;height:72px;border-radius:14px;border:1px solid var(--edge);background:var(--pane2)">
+    <div class="eyebrow" style="margin:0">CMH Scientific</div>
   </div>
-
-</div>
-</section>
-
-</main>
-
-
-<footer>
-
-  <div class="wrap">
-
-    © <span id="y"></span> Conquer Medical — Research-stage wearable concepts
-    for continuous, non-invasive biological response monitoring
-
-    <br>
-
-    Conquer Medical, a division of Conquer Risk. The wearable systems
-    described on this site are research-stage concepts and engineering
-    designs. They are not medical devices, have not been evaluated or cleared
-    by any regulatory authority, are not available for sale, and are not
-    intended for clinical or diagnostic use. Nothing on this site constitutes
-    medical advice. Any future data collection would be conducted only under
-    applicable ethical, informed-consent, and regulatory oversight.
-
+  <h2>The research and development arm.</h2>
+  <p class="intro">CMH Scientific is where the instruments are built and validated. Each one has an interactive demonstration that runs in a browser with nothing to install, alongside the technical papers and the studies behind it. Every instrument states what it has been shown to do — and what it has not.</p>
+  <div class="herobtns" style="margin-bottom:26px">
+    <a class="btn" href="/cmh-scientific/">Enter CMH Scientific R&amp;D</a>
+    <a class="btn ghost" href="/cmh-scientific/demos/">Open the interactive demos</a>
+    <a class="btn ghost" href="/cmh-scientific/papers/">Read the technical reports</a>
   </div>
+</div></section>
 
-</footer>
+<!-- ============ ACCESS ============ -->
+<section id="access" style="border-bottom:0"><div class="wrap">
+  <div class="eyebrow">Access</div>
+  <h2>Try the instruments on your own data.</h2>
+  <p class="intro">Every instrument has an interactive demonstration that runs in a browser with nothing installed. Production access is licensed and product-scoped; academic, nonprofit and commercial use each require verified identity, institution and intended use. Protected engine logic is not distributed with the public demonstrations.</p>
+  <div class="herobtns">
+    <a class="btn" href="/cmh-scientific/demos/">Open the demos</a>
+    <a class="btn ghost" href="/cmh-scientific/access/">Request software access</a>
+  </div>
+</div></section>
 
-
-<script>
-document.getElementById('y').textContent=new Date().getFullYear()
-</script>
+<footer><div class="wrap footin">
+  <span>Conquer Medical Health · CMH Scientific</span>
+  <span>Public demonstrations · production engines remain behind authenticated services · <a href="/cmh-scientific/access/">Get in touch</a></span>
+</div></footer>
 
 </body>
 </html>
-
